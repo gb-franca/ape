@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url(https://subtlepatterns.com/patterns/noise_lines.png);
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bgoverlay {
+  background: #00224D;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  max-width: 95vw;
+  position: relative;
+}
+
+.ico {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60vw;
+  height: 60vw;
+  max-width: 320px;
+  max-height: 320px;
+  min-width: 140px;
+  min-height: 140px;
+}
+
+.open .ico {
+  animation: open 1.2s;
+  transform: scale(10);
+}
+
+.ico .title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 4;
+  font-size: 50px;
+  font-family: 'Great Vibes', cursive;
+  color: #fff;
+  cursor: pointer;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  transition: opacity 0.3s, top 0.3s;
+  text-align: center;
+  width: 80%;
+  white-space: normal;
+  line-height: 1.1;
+}
+
+.open .ico .title {
+  opacity: 0;
+  top: -100px;
+}
+
+.ico:before,
+.ico:after,
+.ico2:before,
+.ico2:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  font-size: 20em;
+  color: #FF204E;
+  content: "\f004";
+  font-family: FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.ico2:before,
+.ico2:after {
+  color: #FF204E;
+}
+.ico:before { z-index: 3; }
+.ico:after { animation: explode 1.2s infinite; }
+.ico2:before { animation: explodeSmall 1s infinite; }
+.ico2:after { animation: explodeSmall 0.8s infinite; }
+
+/* Animations */
+@keyframes explode {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(1.6); opacity: 0; }
+}
+@keyframes explodeSmall {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(1.2); opacity: 0; }
+}
+@keyframes open {
+  from { transform: scale(1); }
+  to { transform: scale(10); }
+}
+@keyframes show {
+  from { opacity: 0; top: -100px; }
+  to { opacity: 1; top: 0; }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .ico {
+    width: 80vw;
+    height: 80vw;
+    max-width: 95vw;
+    max-height: 85vw;
+    min-width: 100px;
+    min-height: 100px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ico:before,
+  .ico:after,
+  .ico2:before,
+  .ico2:after {
+    font-size: 85vw;
+  }
+  .ico .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    font-size: 10vw;
+    width: 90vw;
+    padding: 0 5vw;
+    text-align: center;
+    z-index: 4;
+    color: #fff;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    white-space: normal;
+    line-height: 1.1;
+  }
+}
